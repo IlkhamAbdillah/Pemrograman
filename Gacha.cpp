@@ -1,8 +1,16 @@
 #include<bits/stdc++.h>
+
+/*library yang digunakan agar program dapat berjalan
+#include<iostream>
+#include<cstdlib>
+#include<ctime>
+#include<fstream>
+*/
+
 using namespace std;
 
 int main(){
-	//Deklarasi Variabel
+	//deklarasi Variabel
 	int total=0, skor=0;
 	int isi, angka, High_Score, simpan;
 	bool bomb=false;
@@ -20,7 +28,6 @@ int main(){
 	cout<<endl<<"                                ENDLESS GACHA"<<endl;
 	cout<<"                              High Score : "<<High_Score<<endl<<endl;;
 	while(!bomb){
-		//memunculkan teks
 		cout<<"                                  Score : "<<skor<<endl;
 		cout<<"                               Total Gacha : "<<total<<endl;
 		cout<<"A : Single pull"<<endl<<"B : 10x pull"<<endl;
@@ -39,21 +46,7 @@ int main(){
 				angka=rand()%100+1;
 				simpan+=angka;
 				if(angka==1){
-					cout<<"\033[2J\033[H";
-					cout<<endl<<"                                  END OF GACHA"<<endl;
-					cout<<"                                  Score : "<<skor<<endl;
-					if(skor>High_Score){
-						High_Score=skor;
-						cout<<"                                !!!Rekor Baru!!!"<<endl;
-						ofstream outputFile("max_value.txt");
-						if(outputFile.is_open()){
-							outputFile<<High_Score;
-							outputFile.close();
-						}
-					}
-					cout<<"                               High Score : "<<High_Score<<endl<<endl;
-					cout<<"                  99% penjudi akan berhenti sebelum mereka maxwin"<<endl<<endl;
-					exit(0);
+					bomb=true;
 				}
 				else if(angka==100){
 					cout<<"!!!Jackpot!!!"<<endl;
@@ -67,21 +60,7 @@ int main(){
 			else{
 				angka=rand()%100+1;
 				if(angka<=10){
-					cout<<"\033[2J\033[H";
-					cout<<endl<<"                                  END OF GACHA"<<endl;
-					cout<<"                                  Score : "<<skor<<endl;
-					if(skor>High_Score){
-						High_Score=skor;
-						cout<<"                                !!!Rekor Baru!!!"<<endl;
-						ofstream outputFile("max_value.txt");
-						if(outputFile.is_open()){
-							outputFile<<High_Score;
-							outputFile.close();
-						}
-					}
-					cout<<"                               High Score : "<<High_Score<<endl<<endl;
-					cout<<"                  99% penjudi akan berhenti sebelum mereka maxwin"<<endl<<endl;
-					exit(0);
+					bomb=true;
 				}
 				else if(angka>=70){
 					cout<<"!!!Jackpot!!!"<<endl;
@@ -96,5 +75,21 @@ int main(){
 		skor+=simpan;
 		cout<<endl;
 	}
+
+	//keluar loop (game berakhir)
+	cout<<"\033[2J\033[H";
+	cout<<endl<<"                                  END OF GACHA"<<endl;
+	cout<<"                                  Score : "<<skor<<endl;
+	if(skor>High_Score){
+		High_Score=skor;
+		cout<<"                                !!!Rekor Baru!!!"<<endl;
+		ofstream outputFile("max_value.txt");
+		if(outputFile.is_open()){
+			outputFile<<High_Score;
+			outputFile.close();
+		}
+	}
+	cout<<"                               High Score : "<<High_Score<<endl<<endl;
+	cout<<"                  99% penjudi akan berhenti sebelum mereka maxwin"<<endl<<endl;
+	return 0;
 }
-//Tambah 1 line lagi biar jadi kaya nilaiku besok Aamiin
