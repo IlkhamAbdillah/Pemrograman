@@ -1,4 +1,6 @@
-Nama : Muhammad Ilkham Abdillah Kelompok : Norton
+Nama : Muhammad Ilkham Abdillah 
+
+Kelompok : Norton
 
 Program ini merupakan sebuah game yang berbasis random number generator (RNG), dimana pemain dapat memilih untuk menarik 1 atau 10 angka.
 
